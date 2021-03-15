@@ -1,0 +1,16 @@
+To do app
+Main screen has ten text fields and tick button next to them
+When ticked the text fields change colour
+Down the bottom there is a button that says clear and archive
+This button clears the text field and unticks the buttons,
+It then will then store the tasks, if they were ticked and date to a csv
+There is another button called archived tasks
+It will open a new window. 
+This will have a field to enter a date, a button to press to search and 
+A text box that will show you what tasks you wrote and completed or not 
+on that date. 
+
+On csv storage each line will be a string. Each value on the line will be a 
+Value of the string. The string's first value will be the date. The string's
+Next values will be a string that consists of the 10 entries text and then a space,
+Then completed or incomplete, based on if the Boolean variable is t or f
