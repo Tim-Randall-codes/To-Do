@@ -1,4 +1,4 @@
-from tkinter import Tk, Entry, Text, Label, Checkbutton, Button, BooleanVar, E, Toplevel
+from tkinter import Tk, Entry, END, Text, Label, Checkbutton, Button, BooleanVar, E, Toplevel
 import csv
 from datetime import date
 
@@ -7,12 +7,6 @@ win = Tk()
 win.title("^_^     To Do!     ^_^")
 win.geometry("400x400")
 win.configure(bg="light blue")
-
-# create list of variables: date, tasks, task complete or not
-# make it so the list can be writen to a csv row
-# make it so the user can read the csv and pull up the row from a date
-# have this happen in a new window. 
-
 
 Onecom = BooleanVar()
 Twocom = BooleanVar()
@@ -93,11 +87,44 @@ def candl():
     with open('/Users/timrandall/Projects/ToDo/storage.csv', mode='a') as file1:
         write1 = csv.writer(file1, delimiter=',')
         write1.writerow(lst)
+    task1e.delete(0, END)
+    task2e.delete(0, END)
+    task3e.delete(0, END)
+    task4e.delete(0, END)
+    task5e.delete(0, END)
+    task6e.delete(0, END)
+    task7e.delete(0, END)
+    task8e.delete(0, END)
+    task9e.delete(0, END)
+    task10e.delete(0, END)
+    task1c.deselect()
+    task2c.deselect()
+    task3c.deselect()
+    task4c.deselect()
+    task5c.deselect()
+    task6c.deselect()
+    task7c.deselect()
+    task8c.deselect()
+    task9c.deselect()
+    task10c.deselect()
 
 def search_date():
-    pass
+    global datee
+    global display0
+    date = datee.get()
+    with open('/Users/timrandall/Projects/ToDo/storage.csv') as file1:
+        csv_reader = csv.reader(file1, delimiter=',')
+        for row in csv_reader:
+            for item in row:
+                if item == date:
+                    display0.delete(1.0, END)
+                    display0.insert(END, str(row))
+                else:
+                    pass
 
 def to_archive():
+    global datee
+    global display0
     newwin = Toplevel(win)
     newwin.title("^^  Archive  ^^")
     newwin.geometry("300x300")
@@ -112,37 +139,37 @@ def to_archive():
     searchbb = Button(newwin, text="Search", command=search_date)
     searchbb.grid(column=0, row=4)
 
-explain = Label(win, bg="light blue", text="Type in a task and tick the box when you finish it")
+explain = Label(win, bg="light blue", text="Type in your day's tasks, tick the box when done")
 explain.grid(column=1, row=0)
 
-task1e = Entry(win, bg="light yellow")
+task1e = Entry(win, bg="light yellow", width=35)
 task1e.grid(column=1, row=1)
 
-task2e = Entry(win, bg="light yellow")
+task2e = Entry(win, bg="light yellow", width=35)
 task2e.grid(column=1, row=2)
 
-task3e = Entry(win, bg="light yellow")
+task3e = Entry(win, bg="light yellow", width=35)
 task3e.grid(column=1, row=3)
 
-task4e = Entry(win, bg="light yellow")
+task4e = Entry(win, bg="light yellow", width=35)
 task4e.grid(column=1, row=4)
 
-task5e = Entry(win, bg="light yellow")
+task5e = Entry(win, bg="light yellow", width=35)
 task5e.grid(column=1, row=5)
 
-task6e = Entry(win, bg="light yellow")
+task6e = Entry(win, bg="light yellow", width=35)
 task6e.grid(column=1, row=6)
 
-task7e = Entry(win, bg="light yellow")
+task7e = Entry(win, bg="light yellow", width=35)
 task7e.grid(column=1, row=7)
 
-task8e = Entry(win, bg="light yellow")
+task8e = Entry(win, bg="light yellow", width=35)
 task8e.grid(column=1, row=8)
 
-task9e = Entry(win, bg="light yellow")
+task9e = Entry(win, bg="light yellow", width=35)
 task9e.grid(column=1, row=9)
 
-task10e = Entry(win, bg="light yellow")
+task10e = Entry(win, bg="light yellow", width=35)
 task10e.grid(column=1, row=10)
 
 task1c = Checkbutton(win, variable=Onecom, onvalue=True, offvalue=False)
